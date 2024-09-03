@@ -1,0 +1,1 @@
+export const ProductCard = () => <article></article>
