@@ -1,1 +1,1 @@
-export * from "./AppRouter.tsx";
+export * from "./app-router.tsx";

@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  align-items: center;
+  column-gap: 19px;
+}
+.text {
+  font-family: var(--third-family);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--color-black-1);
+}
