@@ -8,8 +8,6 @@ import { AppRouter } from "@app/app-router";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <main>
-      <AppRouter />
-    </main>
+    <AppRouter />
   </BrowserRouter>
 );

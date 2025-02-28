@@ -28,3 +28,9 @@
   display: flex;
   gap: #{$gap};
 }
+
+@mixin px-to-rem($property, $value) {
+  $remValue: $value / 16;
+  $pxValue: ($value);
+  #{$property}: #{$remValue}rem;
+}

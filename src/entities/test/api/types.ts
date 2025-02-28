@@ -1,3 +1,5 @@
+import { Undefinedable } from "@shared/libs/utility-types";
+
 export interface ITestDTO {
   id: number;
   name: string;
@@ -22,4 +24,17 @@ export enum EStatusTests {
 export interface ISiteDTO {
   id: number;
   url: string;
+}
+
+export interface IQueryParamsDTO {
+  query: string;
+  page: number;
+  limit: number;
+}
+
+export type IQueryParamsTestDTO = Undefinedable<IQueryParamsDTO>;
+
+export interface IFullInfoTestsDTO {
+  tests: ITestDTO[];
+  sites: ISiteDTO[];
 }

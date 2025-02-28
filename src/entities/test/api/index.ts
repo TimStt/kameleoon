@@ -1,3 +1,3 @@
-export * from "./get-tests";
-export * from "./get-sites";
-export * from "./types";
+export { getFullInfoTests } from "./get-full-info-tests";
+
+export type * from "./types";

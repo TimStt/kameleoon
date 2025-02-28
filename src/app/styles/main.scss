@@ -16,4 +16,25 @@ div#root {
 
 main {
   width: 100%;
+  @include px-to-rem(padding-top, 41px);
+  @include px-to-rem(padding-bottom, 47px);
+}
+
+.container {
+  margin-inline: auto;
+  max-width: calc(var(--container-max-width) + var(--container-padding-x) * 2);
+  padding-inline: var(--container-padding-x);
+  width: 100%;
+}
+
+.back_button {
+  position: sticky;
+
+  &.bottom {
+    bottom: 0;
+  }
+
+  &.left {
+    left: 0;
+  }
 }

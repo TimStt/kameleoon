@@ -10,10 +10,17 @@ export default defineConfig({
     alias: {
       "@pages": path.resolve(__dirname, "./src/pages"),
       "@features": path.resolve(__dirname, "./src/features"),
-
+      "@entities": path.resolve(__dirname, "./src/entities"),
       "@widgets": path.resolve(__dirname, "./src/widgets"),
       "@shared": path.resolve(__dirname, "./src/shared"),
       "@app": path.resolve(__dirname, "./src/app"),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@app/styles/_mixins.scss";`,
+      },
     },
   },
 });

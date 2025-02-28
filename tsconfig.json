@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": "",
+    "baseUrl": "./",
     "paths": {
       "@shared/*": ["./src/shared/*"],
       "@widgets/*": ["./src/widgets/*"],
-
+      "@entities/*": ["./src/entities/*"],
       "@features/*": ["./src/features/*"],
-      "@pages/*": ["src/features/tests/search/pages/*"],
+      "@pages/*": ["src/pages/*"],
       "@app/*": ["./src/app/*"]
     },
     "target": "ES2020",

@@ -1,10 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./back-button.module.scss";
+import cls from "classnames";
 
-const UIBackButton = () => {
+const UIBackButton = ({ className }: { className?: string }) => {
   return (
-    <Link className={styles.root} to=".." relative="path" title="Back">
+    <Link
+      className={cls(styles.root, "back_button", className)}
+      to=".."
+      relative="path"
+      title="Back"
+    >
       <svg
         className={styles.icon}
         width="9"
