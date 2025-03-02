@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "./Dashboard.module.css";
+import styles from "./test-card.module.scss";
 import { ISiteDTO, ITestDTO } from "../../api/types";
 
 import cls from "classnames";
+import { INormilizeDataTests } from "@entities/test/api/normilize-data-tests";
 
-interface ITestCardProps extends ITestDTO {
-  site: ISiteDTO["url"];
+interface ITestCardProps extends INormilizeDataTests {
   renderButtonAction: React.ReactNode;
 }
 

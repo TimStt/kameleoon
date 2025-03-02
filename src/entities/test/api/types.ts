@@ -4,7 +4,7 @@ export interface ITestDTO {
   id: number;
   name: string;
   type: ETypesTests;
-  status: EStatusTests;
+  status: TStatusTests;
   siteId: number;
 }
 
@@ -14,22 +14,28 @@ export enum ETypesTests {
   MVT = "MVT",
 }
 
-export enum EStatusTests {
-  DRAFT = "DRAFT",
-  ONLINE = "ONLINE",
-  PAUSED = "PAUSED",
-  STOPPED = "STOPPED",
+export type TStatusTests = "DRAFT" | "ONLINE" | "PAUSED" | "STOPPED";
+
+export enum EPathTests {
+  DRAFT = "FINALIZE",
+  ONLINE = "RESULT",
+  PAUSED = "RESULT",
+  STOPPED = "RESULT",
 }
 
 export interface ISiteDTO {
-  id: number;
+  id: string;
   url: string;
 }
 
+export type TSort = "asc" | "desc";
+
 export interface IQueryParamsDTO {
-  query: string;
-  page: number;
-  limit: number;
+  q: string;
+  name: TSort;
+  type: TSort;
+  site: TSort;
+  status: TSort;
 }
 
 export type IQueryParamsTestDTO = Undefinedable<IQueryParamsDTO>;

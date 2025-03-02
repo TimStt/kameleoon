@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./layout.module.scss";
-
+import cls from "classnames";
 const Layout = ({
   title,
   subtitle,
@@ -12,7 +12,7 @@ const Layout = ({
 }) => {
   return (
     <>
-      <header className={style.root}>
+      <header className={cls(style.root, "container")}>
         <div className={style.container_text}>
           <h1 className={style.title}> {title}</h1>
           <span className={style.sub_title}>{subtitle}</span>

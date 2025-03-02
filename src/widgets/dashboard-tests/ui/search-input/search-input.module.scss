@@ -1,0 +1,44 @@
+.root {
+  display: flex;
+  @include px-to-rem(max-height, 45);
+  @include px-to-rem(min-height, 45);
+  position: relative;
+  @include px-to-rem(margin-bottom, 31);
+}
+
+.icon {
+  position: absolute;
+  @include px-to-rem(left, 13);
+
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.test_count {
+  position: absolute;
+  @include px-to-rem(right, 16.59);
+  transform: translate(0%, -50%);
+  top: 50%;
+  font-weight: 400;
+  @include px-to-rem(font-size, 14);
+  color: var(--color-gray-dark);
+}
+
+.field {
+  @include px-to-rem(max-height, 45);
+
+  height: 100%;
+  @include px-to-rem(padding-left, 37);
+  @include px-to-rem(padding-right, 82);
+  @include px-to-rem(padding-block, 15);
+  border: 1px solid var(--color-gray-light-1);
+  @include px-to-rem(border-radius, 15);
+  width: 100%;
+
+  @include px-to-rem(margin-bottom, 30);
+  &::placeholder {
+    font-weight: 400;
+    @include px-to-rem(font-size, 14);
+    color: var(--color-gray-dark);
+  }
+}

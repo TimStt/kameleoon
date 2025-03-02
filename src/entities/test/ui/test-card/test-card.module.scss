@@ -1,44 +1,48 @@
 .root {
-  background-color: #fff;
-  border-radius: 3px;
-  flex-wrap: wrap;
+  background-color: var(--color-white);
+  @include px-to-rem(border-radius, 3);
+
   justify-content: space-between;
   align-items: stretch;
-  gap: 20px;
-  width: 954px;
+  @include px-to-rem(gap, 20);
+  @include px-to-rem(padding-right, 12);
+  @include px-to-rem(min-width, 740);
+
+  @include px-to-rem(margin-top, 5);
   max-width: 100%;
-  margin-top: 5px;
-  padding-right: 12px;
+  transition-duration: var(--duration);
+
   display: flex;
 
-  &:first-of-type {
-    margin-top: 14px;
+  &:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
   }
 }
 
 .test_name_container {
-  color: #474747;
+  color: var(--color-black-2);
   align-items: stretch;
-  gap: 11px;
-  font-size: 13px;
+  @include px-to-rem(gap, 11);
+  @include px-to-rem(font-size, 13);
   font-weight: 500;
   display: flex;
 }
 .test_indicator {
-  border-radius: 3px 0 0 3px;
+  @include px-to-rem(border-top-left-radius, 3);
+  @include px-to-rem(border-bottom-left-radius, 3);
   flex-shrink: 0;
-  width: 4px;
-  height: 70px;
+  @include px-to-rem(width, 4);
+  @include px-to-rem(height, 70);
   display: flex;
 }
 .red_indicator {
-  background-color: #e14165;
+  background-color: var(--color-pink);
 }
 .purple_indicator {
-  background-color: #c2c2ff;
+  background-color: var(--color-purple);
 }
 .blue_purple_indicator {
-  background-color: #8686ff;
+  background-color: var(--color-blue-purple);
 }
 .test_name {
   flex-basis: auto;
@@ -50,10 +54,11 @@
   white-space: nowrap;
   flex-wrap: wrap;
   align-items: center;
-  gap: 40px 75px;
+  @include px-to-rem(row-gap, 40);
+  @include px-to-rem(column-gap, 75);
   margin-top: auto;
   margin-bottom: auto;
-  font-size: 12px;
+  @include px-to-rem(font-size, 12);
   font-weight: 400;
   display: flex;
 }

@@ -8,25 +8,19 @@ import { LoaderFunctionArgs } from "react-router-dom";
 import { getQueryParamsInRequest } from "@shared/helpers/get-query-params-in-request";
 
 export const getFullInfoTests = async (
-  param: LoaderFunctionArgs<any>,
   setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>
-): Promise<IFullInfoTestsDTO | undefined> => {
+): Promise<IFullInfoTestsDTO | null> => {
   try {
     setIsLoading?.(true);
 
-    const queryParams =
-      getQueryParamsInRequest(param).getQueryParams<IQueryParamsTestDTO>();
+    // const queryParams =
+    //   getQueryParamsInRequest(param).getQueryParams<IQueryParamsTestDTO>();
 
-    const response = await Promise.all([
-      getTestsApi(
-        queryParams ? transformObjectByParams(queryParams) : undefined
-      ),
-      getSitesApi(),
-    ]);
+    const response = await Promise.all([getTestsApi(), getSitesApi()]);
 
     return { tests: response[0], sites: response[1] };
   } catch (error) {
-    return undefined;
+    return null;
   } finally {
     setIsLoading?.(false);
   }

@@ -8,16 +8,25 @@ body {
 }
 
 div#root {
-  display: flex;
+  $top-padding: 41;
+  $bottom-padding: 47;
+
+  --top-padding: #{$top-padding}px;
+  --bottom-padding: #{$bottom-padding}px;
+
+  --height: 100dvh;
+  @include flex-column;
   margin: 0 auto;
-  height: 100vh;
-  max-height: 100vh;
+  height: var(--height);
+  max-height: var(--height);
+  background-color: var(--color-white-1);
+  @include px-to-rem(padding-top, $top-padding);
+  @include px-to-rem(padding-bottom, $bottom-padding);
 }
 
 main {
   width: 100%;
-  @include px-to-rem(padding-top, 41px);
-  @include px-to-rem(padding-bottom, 47px);
+  flex-grow: 1;
 }
 
 .container {

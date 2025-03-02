@@ -24,7 +24,7 @@ const router = createBrowserRouter([
   {
     path: PATH_DASHBOARD,
     element: <Dashboard />,
-    loader: (query) => getFullInfoTests(query),
+    loader: () => getFullInfoTests(),
     children: [
       {
         path: PATH_RESULT,

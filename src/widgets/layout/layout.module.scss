@@ -1,4 +1,4 @@
-@use "../../app/styles/mixins";
+// @use "../../app/styles/mixins";
 
 .root {
   width: 100%;
@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   margin-right: auto;
+  @include px-to-rem(margin-bottom, 40);
 }
 
 .title,
@@ -15,13 +16,14 @@
   font-family: var(--second-family);
 
   color: var(--color-black-1);
-  font-weight: 600;
 }
 
 .title {
-  @include px-to-rem(font-size, 14px);
+  font-weight: 700;
+  @include px-to-rem(font-size, 26);
 }
 
 .sub_title {
-  @include px-to-rem(font-size, 12px);
+  font-weight: 600;
+  @include px-to-rem(font-size, 12);
 }

@@ -6,8 +6,4 @@ import "@app/styles/index.scss";
 
 import { AppRouter } from "@app/app-router";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <AppRouter />
-  </BrowserRouter>
-);
+ReactDOM.createRoot(document.getElementById("root")!).render(<AppRouter />);

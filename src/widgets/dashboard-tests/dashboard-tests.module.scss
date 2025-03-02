@@ -1,0 +1,60 @@
+.root {
+  overflow-y: auto;
+}
+
+.content {
+  @include flex-column;
+  @include px-to-rem(5, row-gap);
+}
+
+.not_found {
+  align-items: center;
+  @include flex-column;
+  @include px-to-rem(72, row-gap);
+  justify-content: center;
+  height: 100%;
+  @include px-to-rem(149, margin-top);
+}
+
+.not_found_text {
+  @include px-to-rem(24, font-size);
+
+  font-weight: 700;
+  color: var(--color-black);
+}
+
+.filters {
+  @include px-to-rem(min-width, 740);
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+  width: 100%;
+  @include px-to-rem(padding-left, 11);
+  @include px-to-rem(padding-right, 240);
+  @include px-to-rem(margin-bottom, 10);
+
+  button {
+    font-weight: 500;
+    @include px-to-rem(font-size, 11);
+    text-transform: uppercase;
+    color: var(--color-gray-dark);
+
+    text-align: center;
+  }
+
+  &__block {
+    display: flex;
+    @include px-to-rem(column-gap, 80);
+    @include px-to-rem(margin-left, 30);
+  }
+}
+
+.action_button {
+  color: var(--color-white);
+  text-align: center;
+  border-radius: 10px;
+  align-self: stretch;
+  padding: 11px 26px;
+  font-family: var(--second-family);
+  font-weight: 600;
+}
