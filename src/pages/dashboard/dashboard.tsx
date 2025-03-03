@@ -5,10 +5,11 @@ import Layout from "@widgets/layout/layout";
 
 export const Dashboard = () => {
   return (
-    <WrapperTests>
-      <Layout title="Dashboard">
+    <Layout title="Dashboard">
+      <WrapperTests>
+        {" "}
         <DashboardTests />
-      </Layout>
-    </WrapperTests>
+      </WrapperTests>
+    </Layout>
   );
 };

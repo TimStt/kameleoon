@@ -1,48 +1,55 @@
-import { IQueryParamsDTO, IQueryParamsTestDTO } from "@entities/test/api/types";
 import { WrapperTestsContext } from "@entities/test/ui/wrapper-tests/wrapper-tests";
 import { sortedByAlphabet } from "@shared/helpers/sorted-by-alphabet/index";
 import { useQueryParamAction } from "@shared/helpers/use-query-param-action";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { sortKeysByAlphabet, TSortKeysByAlphabet } from "../constants";
 import { hasInParamKeysBySort } from "./has-in-param-keys-by-sort";
 import { INormilizeDataTests } from "@entities/test/api/normilize-data-tests";
 import { sortedTestsByStatus } from "./sorted-status";
+import { SortContex } from "../ui/wrapper-sort/wrapper-sort";
+import { ISortedParamsTestDTO } from "@entities/test/api/types";
 
 export const useSortedTests = () => {
-  const tests = useContext(WrapperTestsContext);
-  const setTests = tests?.setTests;
-  const currentTests = tests?.tests;
+  const paramTests = useContext(WrapperTestsContext);
+  const [isValuesSort, setValuesSort] = useState<ISortedParamsTestDTO>();
+  console.log("isValuesSort", isValuesSort);
+  const setTests = paramTests?.setTests;
+  const currentTests = paramTests?.tests;
 
-  const queriesParams =
-    useQueryParamAction().getAllParams<IQueryParamsTestDTO>();
-  const query = useQueryParamAction().get("name");
+  console.log("paramTests", paramTests);
 
-  console.log("query name   ", query);
   // name, type и site должны быть отсортированы в алфавитном порядке
 
   useEffect(() => {
-    if (!currentTests || !queriesParams) return;
+    if (!currentTests || !isValuesSort) return;
 
-    const keysByAlphabet = Object.keys(queriesParams).filter((key) =>
+    const keysByAlphabet = Object.keys(isValuesSort).filter((key) =>
       sortKeysByAlphabet.includes(key as TSortKeysByAlphabet)
     ) as TSortKeysByAlphabet[];
 
-    if (hasInParamKeysBySort(queriesParams, keysByAlphabet)) {
+    if (hasInParamKeysBySort(isValuesSort, keysByAlphabet)) {
       const sortedTestsByAlphabet = sortedByAlphabet<INormilizeDataTests>(
-        currentTests,
         keysByAlphabet,
-        queriesParams.name
+        currentTests,
+        isValuesSort.name
       );
 
       setTests?.(sortedTestsByAlphabet);
     }
 
-    if (queriesParams.status) {
+    if (isValuesSort.status) {
       const sortedByStatus = sortedTestsByStatus(
         currentTests,
-        queriesParams.status
+        isValuesSort.status
       );
-      setTests?.(sortedByStatus);
+
+      setTests?.([...sortedByStatus]);
     }
-  }, [queriesParams.name]);
+    console.log("currentTests", currentTests);
+  }, [isValuesSort, setTests]);
+
+  return {
+    isValuesSort,
+    setValuesSort,
+  };
 };

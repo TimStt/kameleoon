@@ -1,5 +1,4 @@
 import { INormilizeDataTests } from "@entities/test/api/normilize-data-tests";
-import { IQueryParamsDTO } from "@entities/test/api/types";
 
 export type TSortKeysByAlphabet = keyof Omit<
   INormilizeDataTests,

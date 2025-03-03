@@ -8,15 +8,21 @@ import { PATH_DASHBOARD } from "@shared/constans/paths";
 
 const NotFound = () => {
   const { cleanAllParams: reset } = useQueryParamAction();
+
+  const navigation = useNavigate();
   const handleReset = () => {
-    reset();
+    navigation(0);
   };
   return (
     <div className={styles.not_found}>
       <span className={styles.not_found_text}>
         Your search did not match any results.
       </span>
-      <UIButton className={styles.not_found_button} onClick={handleReset}>
+      <UIButton
+        className={styles.not_found_button}
+        onClick={handleReset}
+        accent="complete_accent"
+      >
         Reset
       </UIButton>
     </div>

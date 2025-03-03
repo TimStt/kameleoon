@@ -4,49 +4,23 @@
 
 .content {
   @include flex-column;
-  @include px-to-rem(5, row-gap);
+  @include px-to-rem(row-gap, 5);
 }
 
 .not_found {
   align-items: center;
   @include flex-column;
-  @include px-to-rem(72, row-gap);
+  @include px-to-rem(row-gap, 61);
   justify-content: center;
   height: 100%;
-  @include px-to-rem(149, margin-top);
+  @include px-to-rem(margin-top, 149);
 }
 
 .not_found_text {
-  @include px-to-rem(24, font-size);
+  @include px-to-rem(font-size, 24);
 
-  font-weight: 700;
+  font-weight: 500;
   color: var(--color-black);
-}
-
-.filters {
-  @include px-to-rem(min-width, 740);
-  display: flex;
-  justify-content: space-between;
-  column-gap: 10px;
-  width: 100%;
-  @include px-to-rem(padding-left, 11);
-  @include px-to-rem(padding-right, 240);
-  @include px-to-rem(margin-bottom, 10);
-
-  button {
-    font-weight: 500;
-    @include px-to-rem(font-size, 11);
-    text-transform: uppercase;
-    color: var(--color-gray-dark);
-
-    text-align: center;
-  }
-
-  &__block {
-    display: flex;
-    @include px-to-rem(column-gap, 80);
-    @include px-to-rem(margin-left, 30);
-  }
 }
 
 .action_button {

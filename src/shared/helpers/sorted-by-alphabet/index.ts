@@ -1,19 +1,20 @@
 import { ITestDTO } from "@entities/test/api/types";
 
-import { IQueryParamsTestDTO, TSort } from "@entities/test/api/types";
+import { TSort } from "@entities/test/api/types";
 
 export const sortedByAlphabet = <ObjectSort extends Object>(
-  listSort: ObjectSort[],
-
   keysList: Array<keyof ObjectSort>,
+  listSort?: ObjectSort[],
   type?: TSort
 ) => {
-  let resultSort = listSort;
+  let resultSort = structuredClone(listSort);
 
   if (!type) return listSort;
 
+  console.log("keysList SORT", keysList);
+
   keysList.forEach((key) => {
-    resultSort = resultSort.sort((a, b) => {
+    resultSort = resultSort?.sort((a, b) => {
       if (typeof a?.[key] === "string" && typeof b?.[key] === "string") {
         return {
           asc: a?.[key]?.localeCompare(b?.[key]),
@@ -22,5 +23,10 @@ export const sortedByAlphabet = <ObjectSort extends Object>(
       }
       return 0;
     });
+    console.log("sortedByAlphabet key", key, type, resultSort);
   });
+
+  console.log("resultSort", resultSort);
+
+  return resultSort;
 };

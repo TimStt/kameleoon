@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
-import styles from "../../dashboard-tests.module.scss";
 import { useQueryParamAction } from "@shared/helpers/use-query-param-action";
 import { useSortedTests } from "@features/tests/sorted/model/use-sorted-tests";
+import style from "./filters.module.scss";
+import { ISortedParamsTestDTO } from "@entities/test/api/types";
 const Filters = () => {
-  useSortedTests();
-  const { set, get } = useQueryParamAction();
+  const { setValuesSort, isValuesSort } = useSortedTests();
 
-  const handleSort = (key: string) => {
-    set(key, get(key) === "asc" ? "desc" : "asc");
+  const handleSort = (key: keyof ISortedParamsTestDTO) => {
+    setValuesSort({
+      ...isValuesSort,
+      [key]: isValuesSort?.[key] === "asc" ? "desc" : "asc",
+    });
   };
 
-  const getTitle = (key: string) => {
-    return `${
-      new URLSearchParams(window.location.search).get(key) === "asc" ? "↑" : "↓"
-    }`;
+  const getTitle = (key: keyof ISortedParamsTestDTO) => {
+    return `${isValuesSort?.[key] === "asc" ? "↑" : "↓"}`;
   };
   return (
-    <div className={styles.filters}>
+    <div className={style.root}>
       <button onClick={() => handleSort("name")}>Name</button>
-      <div className={styles.filters__block}>
+      <div className={style.root__block}>
         <button onClick={() => handleSort("type")} title={getTitle("type")}>
           Type
         </button>

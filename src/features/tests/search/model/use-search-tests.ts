@@ -14,9 +14,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 export const useSearchTests = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [result, setResult] = useState<INormilizeDataTests[]>([]);
+  const [isValueInput, setValueInput] = useState<string>();
+  [];
 
-  const query = useQueryParamAction().get(NAME_SEARCH_PARAM);
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValueInput(e.target.value);
+  };
+
+  const query = isValueInput;
 
   const tests = useContext(WrapperTestsContext);
   const setTests = tests?.setTests;
@@ -36,19 +41,15 @@ export const useSearchTests = () => {
     );
 
     if (searchedTests) {
-      setResult(searchedTests);
       setIsLoading(false);
       setTests(searchedTests);
     }
   }, [query]);
 
   useEffect(() => {
-    console.log("currentTests   ", currentTests);
-    console.log("result   ", result);
-
     setIsLoading(true);
     debounce(searchTests, 500)();
   }, [query]);
 
-  return { isLoading, currentTests };
+  return { isLoading, currentTests, handleChangeInput, isValueInput };
 };

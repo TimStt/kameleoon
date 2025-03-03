@@ -30,15 +30,14 @@ export interface ISiteDTO {
 
 export type TSort = "asc" | "desc";
 
-export interface IQueryParamsDTO {
-  q: string;
+export interface ISortedParamsDTO {
   name: TSort;
   type: TSort;
   site: TSort;
   status: TSort;
 }
 
-export type IQueryParamsTestDTO = Undefinedable<IQueryParamsDTO>;
+export type ISortedParamsTestDTO = Undefinedable<ISortedParamsDTO>;
 
 export interface IFullInfoTestsDTO {
   tests: ITestDTO[];

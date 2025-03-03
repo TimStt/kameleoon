@@ -11,7 +11,9 @@ import React, { useEffect, useMemo, useState } from "react";
 export interface IWrapperTests {
   tests?: INormilizeDataTests[];
   isLoading?: boolean;
-  setTests: (tests?: INormilizeDataTests[]) => void;
+  setTests: React.Dispatch<
+    React.SetStateAction<INormilizeDataTests[] | undefined>
+  >;
   setRefresh: (refresh: boolean) => void;
 }
 
